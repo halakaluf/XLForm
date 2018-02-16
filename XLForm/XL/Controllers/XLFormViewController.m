@@ -956,7 +956,15 @@
     UITableViewCell<XLFormDescriptorCell> * currentCell = [firstResponder formDescriptorCell];
     NSIndexPath * currentIndexPath = [self.tableView indexPathForCell:currentCell];
     XLFormRowDescriptor * currentRow = [self.form formRowAtIndex:currentIndexPath];
-    XLFormRowDescriptor * nextRow = [self nextRowDescriptorForRow:currentRow withDirection:direction];
+    XLFormRowDescriptor * nextRow = nil;
+    if([currentCell formDescriptorCellLastResponder] != nil &&
+       firstResponder != [currentCell formDescriptorCellLastResponder] &&
+       direction == XLFormRowNavigationDirectionNext){
+        nextRow = currentRow;
+    }else{
+        nextRow = [self nextRowDescriptorForRow:currentRow withDirection:direction];
+    }
+    
     if (nextRow) {
         UITableViewCell<XLFormDescriptorCell> * cell = (UITableViewCell<XLFormDescriptorCell> *)[nextRow cellForFormController:self];
         if ([cell formDescriptorCellCanBecomeFirstResponder]){

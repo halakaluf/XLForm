@@ -44,7 +44,7 @@
 -(BOOL)formDescriptorCellBecomeFirstResponder;
 -(void)formDescriptorCellDidSelectedWithFormController:(XLFormViewController *)controller;
 -(NSString *)formDescriptorHttpParameterName;
-
+-(UIView *)formDescriptorCellLastResponder;
 
 -(void)highlight;
 -(void)unhighlight;

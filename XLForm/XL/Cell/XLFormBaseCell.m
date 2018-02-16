@@ -89,6 +89,10 @@
     return NO;
 }
 
+-(UIView *)formDescriptorCellLastResponder {
+    return nil;
+}
+
 #pragma mark -
 
 -(BOOL)becomeFirstResponder
